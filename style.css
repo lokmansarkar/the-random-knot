@@ -1,0 +1,228 @@
+/* General Reset and Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Essential for responsive pure CSS design */
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #002339;
+    color: #fff;
+    min-height: 60vh;
+    display: flex; /* Center the content vertically and horizontally */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Main Container and Box */
+.container {
+    width: 100%;
+    max-width: 600px; /* Limit the maximum width of the app */
+}
+
+.generator-box {
+    width: 100%;
+    padding: 20px;
+}
+
+.container h1 {
+    font-weight: 600;
+    font-size: 45px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.container h1 span {
+    color: #019f55;
+    border-bottom: 4px solid #019f55;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Password Display */
+.display {
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.display img {
+    width: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.display img:hover {
+    transform: scale(1.1);
+}
+
+.display input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.2rem;
+    flex-grow: 1;
+    padding-right: 15px;
+    color: #333;
+}
+
+/* Controls Card (Settings) */
+.controls-card {
+    background: #00375a;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.controls-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Length Input Group */
+.control-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #00507d; /* Separator */
+}
+
+.control-group label {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.control-group input[type="number"] {
+    width: 80px;
+    padding: 8px;
+    background-color: #002339;
+    border: 1px solid #019f55;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    -moz-appearance: textfield; /* Hide arrows in Firefox */
+}
+/* Hide arrows in Chrome/Safari */
+.control-group input::-webkit-outer-spin-button,
+.control-group input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Checkbox Groups */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    /* Basic style for the actual checkbox */
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    accent-color: #019f55; /* Changes color of the checked state */
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 0.95rem;
+    color: #ccc;
+    cursor: pointer;
+}
+
+/* Generate Button */
+.container button {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #019f55;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 26px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 10px rgba(1, 159, 85, 0.4);
+}
+
+.container button:hover {
+    background: #018b4c;
+    transform: translateY(-2px);
+}
+
+.container button img {
+    width: 25px;
+    margin-right: 12px;
+}
+
+/* --- Media Queries for Full Responsiveness --- */
+
+/* Adjustments for Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .container h1 {
+        font-size: 38px;
+    }
+
+    .display input {
+        font-size: 1.1rem;
+    }
+}
+
+/* Adjustments for Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .container h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .container h1 br {
+        display: none; /* Hide line break on very small screens */
+    }
+
+    .generator-box {
+        padding: 10px;
+    }
+
+    .display {
+        padding: 12px 15px;
+    }
+
+    .display img {
+        width: 25px;
+    }
+
+    .display input {
+        font-size: 1rem;
+    }
+    
+    .controls-card {
+        padding: 15px;
+    }
+
+    .container button {
+        font-size: 1.1rem;
+        padding: 15px 20px;
+    }
+}

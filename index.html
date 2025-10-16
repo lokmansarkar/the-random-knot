@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Random Knot</title>
+    <link rel="icon" href="./images/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="generator-box">
+        <h1>The Random Knot<br> <span>Password Generator</span></h1>
+        
+        <div class="display">
+            <input type="text" id="password" placeholder="Password" readonly>
+            <img src="./images/copy.png" alt="Copy Password" onclick="copyPassword()">
+        </div>
+    
+        <div class="controls-card">
+            <h5 class="controls-title">Password Settings</h5>
+            
+            <div class="control-group">
+                <label for="password-length">Length:</label>
+                <input type="number" id="password-length" value="12" min="6" max="30">
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="include-uppercase" checked>
+                <label for="include-uppercase">Include Uppercase Letters (A-Z)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="include-lowercase" checked>
+                <label for="include-lowercase">Include Lowercase Letters (a-z)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="include-numbers" checked>
+                <label for="include-numbers">Include Numbers (0-9)</label>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="include-symbols" checked>
+                <label for="include-symbols">Include Symbols (!@#$)</label>
+            </div>
+        </div>
+
+        <button onclick="createPassword()"><img src="./images/generate.png" alt="Generate Icon"> Generate Password</button>
+
+    </div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
