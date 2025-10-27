@@ -18,7 +18,7 @@
         
         <div class="display">
             <input type="text" id="password" placeholder="Password" readonly>
-            <img src="./images/copy.png" alt="Copy Password" onclick="copyPassword()">
+            <img src="./images/copy.png" alt="Copy Password" id="copy-btn">
         </div>
     
         <div class="controls-card">
@@ -47,7 +47,10 @@
             </div>
         </div>
 
-        <button onclick="createPassword()"><img src="./images/generate.png" alt="Generate Icon"> Generate Password</button>
+        <button id="generate-btn">
+            <img src="./images/generate.png" alt="Generate Icon"> 
+            Generate Password
+        </button>
 
     </div>
 </div>

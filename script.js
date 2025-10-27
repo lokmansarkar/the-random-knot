@@ -5,91 +5,57 @@ const includeUppercase = document.getElementById('include-uppercase');
 const includeLowercase = document.getElementById('include-lowercase');
 const includeNumbers = document.getElementById('include-numbers');
 const includeSymbols = document.getElementById('include-symbols');
+const generateBtn = document.querySelector("button");
+const copyBtn = document.querySelector(".display img");
 
 // Character Sets
 const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
 const numberChars = '0123456789';
-const symbolChars = '!@#$%^&*()-_=+/<>,.[]{}|'; // Added more symbols for better security
+const symbolChars = '!@#$%^&*()-_=+/<>,.[]{}|';
 
-/**
- * Creates a strong, random password based on user selections.
- */
+// Creates a random password based on user selections.
+ 
 function createPassword() {
-    // 1. Get user-defined settings
-    const length = parseInt(lengthInput.value) || 12; // Default to 12 if invalid
+    const length = parseInt(lengthInput.value) || 12; // Get password length (default 12)
     
-    let allChars = '';
-    let requiredChars = []; // Array to ensure at least one of each selected type is included
+    let allChars = ''; 
+    let password = ''; 
 
-    // 2. Build the main character set and the required characters array
-    if (includeUppercase.checked) {
-        allChars += upperCaseChars;
-        requiredChars.push(upperCaseChars[Math.floor(Math.random() * upperCaseChars.length)]);
-    }
-    if (includeLowercase.checked) {
-        allChars += lowerCaseChars;
-        requiredChars.push(lowerCaseChars[Math.floor(Math.random() * lowerCaseChars.length)]);
-    }
-    if (includeNumbers.checked) {
-        allChars += numberChars;
-        requiredChars.push(numberChars[Math.floor(Math.random() * numberChars.length)]);
-    }
-    if (includeSymbols.checked) {
-        allChars += symbolChars;
-        requiredChars.push(symbolChars[Math.floor(Math.random() * symbolChars.length)]);
-    }
+    // Add character sets based on user selection
+    if (includeUppercase.checked) allChars += upperCaseChars;
+    if (includeLowercase.checked) allChars += lowerCaseChars;
+    if (includeNumbers.checked) allChars += numberChars;
+    if (includeSymbols.checked) allChars += symbolChars;
 
     // Edge case: If no character types are selected
-    if (allChars.length === 0) {
+    if (allChars === '') {
         passwordBox.value = 'Select char types!';
         return;
     }
-    
-    let password = requiredChars.join(''); // Start password with the guaranteed characters
 
-    // 3. Fill the rest of the password length with random characters from the full set
-    while (password.length < length) {
+    // Generate the password by randomly picking characters
+    for (let i = 0; i < length; i++) {
         password += allChars[Math.floor(Math.random() * allChars.length)];
     }
 
-    // 4. Shuffle the password to prevent the required characters from always being at the start
-    password = shuffleString(password);
-
-    // 5. Display the result
+    // Display the generated password
     passwordBox.value = password;
 }
 
-/**
- * Helper function to shuffle a string (improves randomness and security).
- * @param {string} str - The string to shuffle.
- * @returns {string} The shuffled string.
- */
-function shuffleString(str) {
-    const arr = str.split('');
-    for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]]; // ES6 destructuring swap
-    }
-    return arr.join('');
-}
+ // Copies the generated password to the clipboard.
 
-
-/**
- * Copies the generated password to the clipboard using the modern API.
- */
 function copyPassword() {
     if (passwordBox.value && passwordBox.value !== 'Select char types!') {
-        // Use the modern Clipboard API
+        // Copy password to clipboard
         navigator.clipboard.writeText(passwordBox.value)
-            .then(() => {
-                alert('Password copied to clipboard!');
-            })
-            .catch(err => {
-                console.error('Could not copy text: ', err);
-                // In a real project, you might include a document.execCommand fallback here
-            });
+            .then(() => alert('Password copied to clipboard!'))
+            .catch(err => console.error('Could not copy text: ', err));
     } else {
         alert('Generate a password first!');
     }
 }
+
+// Event Listeners for the buttons
+generateBtn.addEventListener('click', createPassword);
+copyBtn.addEventListener('click', copyPassword);
